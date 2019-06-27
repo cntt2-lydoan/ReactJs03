@@ -4,8 +4,15 @@ import TableDataRow from './TableDataRow';
 class TableData extends Component {
 
     mapimgDataUser = () => this.props.dataUserProps.map((value,key) =>(
-        <TableDataRow key={key}  stt={key} userName={value.name} tel={value.tel} permission={value.Permission}/>
-    ))
+        <TableDataRow editFunClick={(user) => this.props.editFun(value)} 
+        key={key} 
+        stt={key} 
+        userName={value.name}
+        tel={value.tel}
+        permission={value.Permission}/>
+    ))  
+
+    //this.props.editFun
     
     render() {
         console.log(this.props.dataUserProps);

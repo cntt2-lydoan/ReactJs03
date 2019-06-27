@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
+import EditUser from './EditUser';
 
 class Search extends Component {
     constructor(props) {
         super(props);
         this.state = {
             tempValue : ' '
+        }
+    }
+
+    isShowEditForm = () => {
+        if(this.props.editUserStatus === true ){
+            return <EditUser/>
         }
     }
     
@@ -24,20 +31,21 @@ class Search extends Component {
     render() {
         return (
             <div className="col-12">
-                <div className="form-group">
-                    <div className="btn-group">
-                    <input type="text" className="form-control"  onChange={(event) => this.isChange(event)} 
-                    placeholder="Nhập tên cần tìm"/>
-                    <div className="btn btn-info" onClick={(dl)=>this.props.checkConnectProps(this.state.tempValue)}> Tìm </div>
-                    
+                {this.isShowEditForm()}
+                        <div className="form-group">
+                            <div className="btn-group">
+                            <input type="text" className="form-control"  onChange={(event) => this.isChange(event)} 
+                            placeholder="Nhập tên cần tìm"/>
+                            <div className="btn btn-info" onClick={(dl)=>this.props.checkConnectProps(this.state.tempValue)}> Tìm </div>
+                            
+                            </div>
+                            <div className="btn-group1">
+                                
+                                {this.hienThiNut()}
+                            </div>
+                        </div>
+                        <hr/>
                     </div>
-                    <div className="btn-group1">
-                        
-                        {this.hienThiNut()}
-                    </div>
-                </div>
-                <hr/>
-            </div>
 
         );
     }
