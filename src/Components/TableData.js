@@ -5,6 +5,7 @@ class TableData extends Component {
 
     mapimgDataUser = () => this.props.dataUserProps.map((value,key) =>(
         <TableDataRow editFunClick={(user) => this.props.editFun(value)} 
+        changeEditUserStatus={()=>this.props.changeEditUserStatus()}
         key={key} 
         stt={key} 
         userName={value.name}
