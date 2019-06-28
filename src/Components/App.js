@@ -18,6 +18,10 @@ class App extends Component {
     }
   }
 
+  deleteUser = (idUser)=>{
+      console.log(idUser);
+  }
+
   getUserEditInfoApp = (info)=>{
     console.log('thong tin da sua xong la: ' + info.name);
     this.state.data.forEach((value,key)=>{
@@ -98,7 +102,9 @@ class App extends Component {
                  ketNoi={()=>this.doiTrangThai()} hienThiForm={this.state.hienThiForm}
                  editUserStatus={this.state.editUserStatus}
                  changeEditUserStatus={()=>this.changeEditUserStatus()}/>
-                <TableData editFun={(user) => this.editUser(user)} dataUserProps={ketQua}
+                <TableData 
+                deleteUser= {(idUser) => this.deleteUser(idUser)}
+                editFun={(user) => this.editUser(user)} dataUserProps={ketQua}
                 changeEditUserStatus={()=>this.changeEditUserStatus()}/>
                 <AddUser add={(name,tel,Permission)=>this.getNewUserData(name,tel,Permission  )} hienThiForm={this.state.hienThiForm}/>
               </div>

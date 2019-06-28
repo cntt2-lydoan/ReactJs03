@@ -3,14 +3,21 @@ import TableDataRow from './TableDataRow';
 
 class TableData extends Component {
 
+    deleteButtonClick = (idUser)=>{
+        this.props.deleteUser(idUser);
+    }
     mapimgDataUser = () => this.props.dataUserProps.map((value,key) =>(
-        <TableDataRow editFunClick={(user) => this.props.editFun(value)} 
+        <TableDataRow 
+        deleteButtonClick = {(idUser)=>this.deleteButtonClick(idUser)}
+        editFunClick={(user) => this.props.editFun(value)} 
         changeEditUserStatus={()=>this.props.changeEditUserStatus()}
         key={key} 
         stt={key} 
         userName={value.name}
         tel={value.tel}
-        permission={value.Permission}/>
+        permission={value.Permission}
+        id={value.id}
+        />
     ))  
 
     //this.props.editFun
