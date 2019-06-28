@@ -19,7 +19,18 @@ class App extends Component {
   }
 
   deleteUser = (idUser)=>{
-      console.log(idUser);
+    var temData= this.state.data;
+    temData = temData.filter(item => item.id !== idUser);
+    this.setState({
+      data:temData
+    });
+    // console.log(temData);
+     
+    // temData.forEach((value,key) => {
+    //     if(value.id=== idUser){
+    //       console.log(key);
+    //     }
+    //   });
   }
 
   getUserEditInfoApp = (info)=>{
