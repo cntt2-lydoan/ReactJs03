@@ -9,6 +9,9 @@ class App extends Component {
     num:["man hinh","chuot","ban phim"],
     editStatus:true
   }
+
+
+
   var reducer1 = (state = oldState,action) => {
     switch (action.type) {
       case "CHANGE_EDIT_STATUS":
