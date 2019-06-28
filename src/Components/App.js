@@ -13,9 +13,11 @@ class App extends Component {
       hienThiForm: false,
       data:DataUser,
       searchText:"",
-      editUserStatus:true
+      editUserStatus:true,
+      userEditObject:{}
     }
   }
+
 
   changeEditUserStatus = ()=>{
     this.setState({
@@ -25,6 +27,9 @@ class App extends Component {
 
   editUser = (user) => {
     console.log("Da ket noi ok");
+    this.setState({
+      userEditObject:user
+    });
     console.log(user)
   }
 
@@ -77,6 +82,7 @@ class App extends Component {
             <div className="container">
               <div className="row">
                 <Search 
+                userEditObject={this.state.userEditObject}
                  checkConnectProps={(dl)=>this.getTextSearch(dl)}
                  ketNoi={()=>this.doiTrangThai()} hienThiForm={this.state.hienThiForm}
                  editUserStatus={this.state.editUserStatus}
