@@ -4,33 +4,26 @@ import './App.css';
 
 class App extends Component {
   render() {
-    // var p1 = {
-    //   ten:"man hinh",
-    //   gia:90
-    // }
-    // console.log(p1);
-    // var p2 = {...p1} ;
-    // p2.gia=100;
-    // console.log(p2);
-    // console.log(p1);
-
-    // var a1=[3,5,6,7];
-    // var a2 = [...a1];
-    // console.log(a1);
-    // a2[0] = 100;
-    // console.log(a1);
-    // console.log(a2);
-    var b1 ={
-      num: [34,56,23],
-      status:true
-    }
-    var b2 = {...b1,status:false};
-    console.log(b2);
-    var b3 = {...b1,num:[...b1.num,100]};
-    // b3.num[3]=100;
-    console.log(b3);
-
+  var redux = require('redux');    
+  var oldState= {
+    num:["man hinh","chuot","ban phim"],
+    editStatus:true
+  }
+  var reducer1 = (state = oldState,action) => {
+    switch (action.type) {
+      case "CHANGE_EDIT_STATUS":
+        return {...state,editStatus:!state.editStatus}
+        break;
     
+      default:
+        break;
+    }
+    return state;
+  }
+  var store1 = redux.createStore(reducer1);
+  console.log(store1.getState());
+  store1.dispatch({type:"CHANGE_EDIT_STATUS"})
+  console.log(store1.getState());
 
     return (
       <div className="App">
