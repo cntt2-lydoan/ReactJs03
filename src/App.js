@@ -2,9 +2,18 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import {firebaseConnect} from './firebaseConnect';
+import * as firebase from 'firebase';
 
 
 class App extends Component {
+  pushData = () =>{
+    var connectData= firebase.database().ref('dataForNote');
+    connectData.push({
+      title:"Ghi chu so 3",
+      content:"Noi dung ghi chu so 3"
+    })
+    console.log('Bang vua them du lieu vao firebase')
+  }
   render() {
     console.log(firebaseConnect);
     return (
@@ -15,15 +24,8 @@ class App extends Component {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
+      <button onClick={()=>this.pushData()}>Click de them moi bang ham push</button>
     </div>
       </div>
     );
