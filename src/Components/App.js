@@ -11,12 +11,27 @@ class App extends Component {
     super(props);
     this.state = {
       hienThiForm: false,
-      data:DataUser,
+      data:[],
       searchText:"",
       editUserStatus:true,
       userEditObject:{}
     }
   }
+  
+  componentWillMount() {
+    // kiem tra xem co localStrorage nay chua
+    if(localStorage.getItem('userData')=== null){
+      localStorage.setItem('userData',JSON.stringify(DataUser));
+    }
+    else {
+      var temp = JSON.parse(localStorage.getItem('userData'));
+      this.setState({
+        data:temp
+      });
+    }
+    // console.log(localStorage.getItem('userData'));
+  }
+  
 
   deleteUser = (idUser)=>{
     var temData= this.state.data;
@@ -24,6 +39,8 @@ class App extends Component {
     this.setState({
       data:temData
     });
+    //day du lieu vao
+    localStorage.setItem('userData',JSON.stringify(temData));
     // console.log(temData);
      
     // temData.forEach((value,key) => {
@@ -42,6 +59,7 @@ class App extends Component {
         value.Permission=info.Permission;
       }
     })
+    localStorage.setItem('userData',JSON.stringify(this.state.data));
   }
 
   changeEditUserStatus = ()=>{
@@ -71,8 +89,9 @@ class App extends Component {
     this.setState({
       data:items
     });
-    console.log('ket noi ok ok');
-    console.log(this.state.data);
+    // console.log('ket noi ok ok');
+    // console.log(this.state.data);
+    localStorage.setItem('userData',JSON.stringify(items));
   }
 
   getTextSearch = (dl) =>{
@@ -91,6 +110,9 @@ class App extends Component {
   
   thongBao = ()=> {alert("Ket noi thanh cong");}
   render() {
+    //  localStorage.setItem('userData',JSON.stringify(DataUser));
+    // console.log(localStorage.getItem('key1'));
+    // localStorage.removeItem('key1')
     var ketQua = [];
     this.state.data.forEach((item) => {
       if(item.name.indexOf(this.state.searchText) !== -1){
