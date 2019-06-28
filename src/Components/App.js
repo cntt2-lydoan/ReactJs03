@@ -19,7 +19,14 @@ class App extends Component {
   }
 
   getUserEditInfoApp = (info)=>{
-    console.log('thong tin da sua xong la: ' + info.name)
+    console.log('thong tin da sua xong la: ' + info.name);
+    this.state.data.forEach((value,key)=>{
+      if(value.id===info.id){
+        value.name=info.name;
+        value.tel=info.tel;
+        value.Permission=info.Permission;
+      }
+    })
   }
 
   changeEditUserStatus = ()=>{
@@ -29,11 +36,11 @@ class App extends Component {
   }
 
   editUser = (user) => {
-    console.log("Da ket noi ok");
+    //console.log("Da ket noi ok");
     this.setState({
       userEditObject:user
     });
-    console.log(user)
+    //console.log(user)
   }
 
   getNewUserData = (name,tel,Permission) =>{
