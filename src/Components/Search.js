@@ -5,13 +5,25 @@ class Search extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            tempValue : ' '
+            tempValue : ' ',
+            userObj: {}
+
         }
+    }
+    getUserEditInfo = (info) => {
+        this.setState({
+            userObj:info
+        });
+        this.props.getUserEditInfoApp(info)
+
     }
 // props.changeEditUserStatus
     isShowEditForm = () => {
         if(this.props.editUserStatus === true ){
-            return <EditUser userEditObject = {this.props.userEditObject} changeEditUserStatus={()=> this.props.changeEditUserStatus()}/>
+            return <EditUser 
+            getUserEditInfo={(info)=>this.getUserEditInfo(info)}
+            userEditObject = {this.props.userEditObject} 
+            changeEditUserStatus={()=> this.props.changeEditUserStatus()}/>
         }
     }
     

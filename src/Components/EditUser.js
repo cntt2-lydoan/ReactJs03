@@ -16,6 +16,17 @@ class EditUser extends Component {
         const value=event.target.value;
         this.setState({[name]:value});
     }
+    saveButton = () =>{
+        var info ={};
+        info.id=this.state.id;
+        info.name=this.state.name;
+        info.tel=this.state.tel;
+        info.Permission=this.state.Permission;
+
+        this.props.getUserEditInfo(info);
+
+        this.props.changeEditUserStatus();//an form
+    }
     render() {
         return (
             <div className="row">
@@ -39,8 +50,8 @@ class EditUser extends Component {
                                                 </select>
                                                 </div>
                                                 <div className="form-group">
-                                                    <input type="reset" className="btn btn-block btn-danger" 
-                                                     value="Lưu" onClick={()=>this.props.changeEditUserStatus()}/>
+                                                    <input type="button" className="btn btn-block btn-danger" 
+                                                     value="Lưu" onClick={()=>this.saveButton()}/>
 
                                                 </div>
                                             </div>

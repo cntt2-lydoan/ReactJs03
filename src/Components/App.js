@@ -18,6 +18,9 @@ class App extends Component {
     }
   }
 
+  getUserEditInfoApp = (info)=>{
+    console.log('thong tin da sua xong la: ' + info.name)
+  }
 
   changeEditUserStatus = ()=>{
     this.setState({
@@ -82,6 +85,7 @@ class App extends Component {
             <div className="container">
               <div className="row">
                 <Search 
+                getUserEditInfoApp= {(info)=>this.getUserEditInfoApp(info)}
                 userEditObject={this.state.userEditObject}
                  checkConnectProps={(dl)=>this.getTextSearch(dl)}
                  ketNoi={()=>this.doiTrangThai()} hienThiForm={this.state.hienThiForm}
