@@ -1,6 +1,21 @@
 import React, { Component } from 'react';
 
 class EditUser extends Component {
+    constructor(props) {
+        super(props);
+        this.state={
+            id :this.props.userEditObject.id ,
+            name :this.props.userEditObject.name ,
+            tel :this.props.userEditObject.tel ,
+            Permission :this.props.userEditObject.Permission 
+        }
+    }
+    
+    isChange= (event) =>{
+        const name =event.target.name;
+        const value=event.target.value;
+        this.setState({[name]:value});
+    }
     render() {
         return (
             <div className="row">
@@ -10,13 +25,13 @@ class EditUser extends Component {
                                             <div className="card-header text-center">Thêm mới User vào hệ thống</div>
                                             <div className="card-body text-primary">
                                                 <div className="form-group">
-                                                <input defaultValue={this.props.userEditObject.name} type="text"  name="name" className="form-control" placeholder="Ten User" />
+                                                <input onChange={(event) => this.isChange(event)} defaultValue={this.props.userEditObject.name} type="text"  name="name" className="form-control" placeholder="Ten User" />
                                                 </div>
                                                 <div className="form-group">
-                                                <input defaultValue={this.props.userEditObject.tel} type="text" name="tel" className="form-control" placeholder="Điện thoại" />
+                                                <input onChange={(event) => this.isChange(event)} defaultValue={this.props.userEditObject.tel} type="text" name="tel" className="form-control" placeholder="Điện thoại" />
                                                 </div>
                                                 <div className="form-group">
-                                                <select defaultValue={this.props.userEditObject.Permission} className="custom-select" name="Permission" required>
+                                                <select onChange={(event) => this.isChange(event)} defaultValue={this.props.userEditObject.Permission} className="custom-select" name="Permission" required>
                                                     <option value>Chọn quyền mặc định</option>
                                                     <option value={1}>Admin</option>
                                                     <option value={2}>Modrator</option>
