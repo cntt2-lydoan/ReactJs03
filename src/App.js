@@ -6,6 +6,13 @@ import * as firebase from 'firebase';
 
 
 class App extends Component {
+
+  deleteData = (id) => {
+    var connectData = firebase.database().ref('dataForNote');
+    connectData.child(id).remove();
+    console.log("Xoa thanh cong phan tu co id la : "+id)
+  }
+
   pushData = () =>{
     var connectData= firebase.database().ref('dataForNote');
     connectData.push({
@@ -26,6 +33,7 @@ class App extends Component {
         </p>
       </header>
       <button onClick={()=>this.pushData()}>Click de them moi bang ham push</button>
+      <button onClick={()=>this.deleteData('-LiUJXGXu8tcpEC0OEIK')}>Click de xoa du lieu</button>
     </div>
       </div>
     );
